@@ -85,9 +85,11 @@ li {
         display: block;
     }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content, .dropbtn:hover {
+    color: #49429e;
     display: block;
 }
+
 
 .box, .box2, .box3 {
     width: 400px;
@@ -96,7 +98,7 @@ li {
     max-height: 500px;
     border-radius: 30px;
     float: left;
-    padding: 20px;
+    padding: 0px;
     margin-right: 0px;
 }    
 .textbereich {
@@ -133,18 +135,28 @@ body2 {
 .card-body{
     text-align: left;
 }
-.card{
+.card {
     color: var(--clr-neutral-100);
-    background-image: url(../burn.png);
     background-size: cover;
-    padding: 10rem 0 0;
     width: 350px;
     max-width: 500px;
     border-radius: 2rem;
     overflow: hidden;
-   
     transition: transform 500ms ease;
 }
+.img1 {
+    background-size: cover;
+    background-image: url(../FIRE_01.jfif);
+}
+.img2 {
+    background-size: cover;
+    background-image: url(../liquidity.jpg);
+}
+.img3 {
+    background-size: cover;
+    background-image: url(../marketing.jpg);
+}
+
 .card-content {
     --padding: 1.5rem;
     padding: var(--padding);
