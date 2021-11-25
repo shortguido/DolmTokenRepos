@@ -5,8 +5,7 @@
 
 h1 {
     color: #49429e;
-    text-align: center;
-    
+    text-align: left;
 }
 
 p {
@@ -16,11 +15,9 @@ p {
 }
 
 h2 {
-    padding-left: 1.1rem;
     margin-top: 38px;
     color: white;
     text-align: left;
-    
 }
 
 #container {
@@ -138,7 +135,7 @@ body2 {
 }
 .card{
     color: var(--clr-neutral-100);
-    background-image: url(../powderpowderpowder.PNG);
+    background-image: url(../burn.png);
     background-size: cover;
     padding: 10rem 0 0;
     width: 350px;
