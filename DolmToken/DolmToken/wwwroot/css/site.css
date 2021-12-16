@@ -20,6 +20,10 @@ h2 {
     text-align: left;
 }
 
+h3 {
+    color: white;
+}
+
 #container {
     min-width: 640px;
     margin:auto;
