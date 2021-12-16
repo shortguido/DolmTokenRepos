@@ -30,7 +30,7 @@ namespace DolmToken.Controllers
             }
 
             // Eingaben des Benutzers überprüfen - Validierung
-            ValidateRegistartionData(userDateFromForm);
+            ValidateRegistrationData(userDateFromForm);
 
             // Falls das Formular richtig ausgefüllt wurde
             if (ModelState.IsValid)
@@ -47,7 +47,7 @@ namespace DolmToken.Controllers
             return View(userDateFromForm);
         }
 
-        private void ValidateRegistartionData(userinfo u)
+        private void ValidateRegistrationData(userinfo u)
         {
             // Parameter überprüfen
             if (u == null)
