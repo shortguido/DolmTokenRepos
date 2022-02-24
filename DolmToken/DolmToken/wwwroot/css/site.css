@@ -1,6 +1,9 @@
 ﻿* :not(.card, .card-body, .card-content, .card-title) {
     font-family: 'Berlin Sans FB';
-    background-color: #4A4A4A;
+}
+
+body {
+    background-image: linear-gradient(to bottom right, #000000, #666666);
 }
 
 h1 {
@@ -11,7 +14,6 @@ h1 {
 p {
     color: white;
     text-align: left;
-    
 }
 
 h2 {
@@ -26,7 +28,7 @@ h3 {
 
 #container {
     min-width: 640px;
-    margin:auto;
+    margin: auto;
 }
 
 header {
@@ -97,38 +99,42 @@ li {
 
 .box, .box2, .box3 {
     width: 400px;
-    height: 500px;
+    height: 400px;
     max-width: 400px;
-    max-height: 500px;
+    max-height: 400px;
     border-radius: 30px;
     float: left;
     padding: 0px;
     margin-right: 0px;
-}    
+}
+
 .textbereich {
-     
-         width: 100%;
-        height: 300px;
-        margin-top: auto;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: auto;
-    }
+    width: 100%;
+    height: 300px;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+}
+
 .boxbereich {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 :root {
     --clr-neutral-900: hsl(207, 19%, 9%);
     --clr-neutral-100: hsl(0, 0%, 100%);
     --clr-neutral-400: hsl(142, 90%, 61%);
 }
+
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
+
 body2 {
     display: grid;
     min-height: 100vh;
@@ -136,9 +142,11 @@ body2 {
     line-height: 1.6;
     background: var(--clr-neutral-900);
 }
-.card-body{
+
+.card-body {
     text-align: left;
 }
+
 .card {
     color: var(--clr-neutral-100);
     background-size: cover;
@@ -148,14 +156,17 @@ body2 {
     overflow: hidden;
     transition: transform 500ms ease;
 }
+
 .img1 {
     background-size: cover;
     background-image: url(../FIRE_01.jfif);
 }
+
 .img2 {
     background-size: cover;
     background-image: url(../liquidity.jpg);
 }
+
 .img3 {
     background-size: cover;
     background-image: url(../marketing.jpg);
@@ -164,17 +175,17 @@ body2 {
 .card-content {
     --padding: 1.5rem;
     padding: var(--padding);
-    padding: 1.5em;
+    padding: 0.5em;
     background: linear-gradient( hsl(0 0% 0% / 0), hsl(0 0% 0% / 1));
     transform: translateY(54%);
     transition: transform 500ms ease;
     transition-delay: 500ms;
 }
 
-.card-title::after{
+.card-title::after {
     content: "";
     position: absolute;
-    height:3px;
+    height: 3px;
     left: calc(var(--padding) * -1);
     bottom: 0;
     width: calc(100% + var(--padding));
@@ -183,15 +194,17 @@ body2 {
     transform-origin: left;
     transition: transform 500ms ease;
 }
-.card:hover .card-title::after{
+
+.card:hover .card-title::after {
     transform: scaleX(1);
 }
-.card-title{
+
+.card-title {
     position: relative;
     width: max-content;
 }
-.button{
 
+.button {
     cursor: pointer;
     display: inline-block;
     text-decoration: none;
@@ -201,15 +214,15 @@ body2 {
     border-radius: 0.5rem;
 }
 
-.button:hover,
-.button:focus{
-    background-color: var(--clr-neutral-100);
-}
+    .button:hover,
+    .button:focus {
+        background-color: var(--clr-neutral-100);
+    }
 
-.card:hover{
+.card:hover {
     transform: scale(1.05);
 }
 
-.card:hover .card-content{
-    transform: translateY(0%);
-}
+    .card:hover .card-content {
+        transform: translateY(0%);
+    }

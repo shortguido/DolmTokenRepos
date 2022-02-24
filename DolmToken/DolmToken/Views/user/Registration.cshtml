@@ -1,30 +1,31 @@
 ﻿@model DolmToken.Models.User
 
-@{
-    ViewData["Title"] = "Index";
-}
+@{ ViewData["Title"] = "Index"; }
 
 <h1>Registrierung</h1>
 
 <form asp-controller="user" asp-action="registration" method="post">
     <p>
         <label asp-for="username">Benutzername</label><br />
-        <input type="text" asp-for="username" />
+        <input type="text" asp-for="username" placeholder="Your username..." />
         <span asp-validation-for="username"></span>
     </p>
     <p>
         <label asp-for="password">Passwort</label><br />
-        <input type="password" asp-for="password" />
+        <input type="password" asp-for="password" placeholder="Your password..." />
         <span asp-validation-for="password"></span>
     </p>
     <p>
         <label asp-for="email">E-Mail</label><br />
-        <input type="email" asp-for="email" />
+        <input type="email" asp-for="email" placeholder="Your email..." />
         <span asp-validation-for="email"></span>
     </p>
     <p>
         <input type="submit" value="absenden" />
         <input type="reset" value="abbrechen" />
+    </p>
+    <p>
+        <a href="/user/Login">Hier kommen sie zum Login.</a>
     </p>
 </form>
 
