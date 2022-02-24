@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace DolmToken.Models
 {
-    public class userinfo
+    public class User
     {
         private int _userId;
 

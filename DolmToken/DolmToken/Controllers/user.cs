@@ -20,7 +20,7 @@ namespace DolmToken.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Registration(userinfo userDateFromForm)
+        public IActionResult Registration(User userDateFromForm)
         {
             // Parameter überprüfen
             if (userDateFromForm == null)
@@ -47,7 +47,7 @@ namespace DolmToken.Controllers
             return View(userDateFromForm);
         }
 
-        private void ValidateRegistrationData(userinfo u)
+        private void ValidateRegistrationData(User u)
         {
             // Parameter überprüfen
             if (u == null)
