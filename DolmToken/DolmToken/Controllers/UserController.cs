@@ -36,12 +36,29 @@ namespace DolmToken.Controllers
                 _rep.Disconnect();
             }
         }
+        [HttpPost]
         public IActionResult Delete(int id)
         {
-            // TODO: User mit der ID id löschen
+            try
+            {
+                _rep.Connect();
+                if (_rep.Delete(id))
+                {
+                    return View("_Message", new Message("Delete", "Ihre Daten wurden erfolgreich gelöscht!"));
+                }
+            }
+            catch (DbException)
+            {
+                return View("_Message", new Message("Delete", "Datenbankfehler!",
+                            "Bitte versuchen Sie es später erneut!"));
+            }
+            finally
+            {
+                _rep.Disconnect();
+            }
             return View();
         }
-        public IActionResult Update(int id)
+        public IActionResult Update(int id, User user)
         {
             // TODO: User mit der ID id updaten
             return View();
