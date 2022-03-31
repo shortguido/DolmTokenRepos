@@ -2,6 +2,9 @@
     font-family: 'Berlin Sans FB';
 }
 
+footer{
+    background-color: transparent;
+}
 body {
     background-image: linear-gradient(to bottom right, #000000, #666666);
 }
