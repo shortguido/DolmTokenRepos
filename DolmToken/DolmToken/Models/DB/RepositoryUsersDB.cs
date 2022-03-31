@@ -243,7 +243,6 @@ namespace FirstWebApp.Models.DB
 
         public bool Login(string username, string password)
         {
-            string pw;
             if (this._conn?.State == ConnectionState.Open)
             {
                 //ein leeres Commmand erzuegen
@@ -251,22 +250,26 @@ namespace FirstWebApp.Models.DB
                 // SQL-Befehl angeben: Parameter verwenden, um SQL-Injection zu vermeiden
                 //      @username... Paramtername - kann frei gewählt werden
                 //       SQL-Injection: es versucht ein Angreifer einen SQL-Befehl zu den MySQL-Server zu senden
-                cmdLogin.CommandText = "select password from users where username=@username; ";
+                cmdLogin.CommandText = "select username, password from users where username = @username and password = sha2(@password, 512)";
                 DbParameter paramUsername = cmdLogin.CreateParameter();
                 //Parameter @username befüllen
                 paramUsername.ParameterName = "username";
                 paramUsername.DbType = DbType.String;
                 paramUsername.Value = username;
+
+                DbParameter paramPassword = cmdLogin.CreateParameter();
+                paramPassword.ParameterName = "password";
+                paramPassword.DbType = DbType.String;
+                paramPassword.Value = password;
+
+                cmdLogin.Parameters.Add(paramUsername);
+                cmdLogin.Parameters.Add(paramPassword);
+
                 using (DbDataReader reader = cmdLogin.ExecuteReader())
                 {
-                    pw = Convert.ToString(reader["password"]);
-                };
-                if (pw == password)
-                {
-                    return true;
-                }
+                    return reader.Read();   
+                }   
             }
-
             return false;
         }
     }

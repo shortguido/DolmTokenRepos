@@ -139,10 +139,59 @@ namespace DolmToken.Controllers
             // + mind. ein Sonderzeichen, + mind. eine Zahl
 
         }
-
+        [HttpGet]
         public IActionResult Login()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login(User userDateFromForm)
+        {
+            // Parameter überprüfen
+            if (userDateFromForm == null)
+            {
+                // Weiterleitung an eine Methode (Action) in selben Controller
+                return RedirectToAction("Login");
+            }
+
+            // Eingaben des Benutzers überprüfen - Validierung
+            ValidateRegistrationData(userDateFromForm);
+
+            // Falls das Formular richtig ausgefüllt wurde
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _rep.Connect();
+                    if (_rep.Login(userDateFromForm.username, userDateFromForm.password))
+                    {
+                        return View("_Message", new Message("Login", "Sie haben sich erfolgreich angemeldet"));
+                    }
+                    else
+                    {
+                        return View("_Message", new Message("Login", "Fehler!",
+                                    "Bitte versuchen Sie es erneut"));
+                    }
+                }
+                catch (DbException)
+                {
+                    return View("_Message", new Message("Login", "Datenbankfehler!",
+                                "Bitte versuchen Sie es später erneut!"));
+                }
+                finally
+                {
+                    _rep.Disconnect();
+                }
+
+                // zeigen unsere MessageView mit einer entsprechenden Meldung an
+
+            }
+
+            // falls etwas falsch engege. wurde, wird das Reg-formular
+            // erneut aufgerufen - mit den bereits eingeg. Daten
+
+            return View(userDateFromForm);
         }
     }
 }
