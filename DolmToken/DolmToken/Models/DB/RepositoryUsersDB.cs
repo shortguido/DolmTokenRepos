@@ -265,8 +265,7 @@ namespace FirstWebApp.Models.DB
                 cmdLogin.Parameters.Add(paramUsername);
                 cmdLogin.Parameters.Add(paramPassword);
 
-                using (DbDataReader reader = cmdLogin.ExecuteReader())
-                {
+                using (DbDataReader reader = cmdLogin.ExecuteReader()) {
                     return reader.Read();   
                 }   
             }
