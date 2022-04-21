@@ -1,7 +1,14 @@
 ﻿<ul>
     <a href="#home"><img style="margin: 5px 5px; width: 64px; height: 64px; float: left;" src="~/bitcoin.png" alt="Coin" /></a>
     <li><a href="/Home/Index" style="font-weight: bold;">DOLM TOKEN</a></li>
-    <li style="float:right"><a href="/user/Login">ANMELDEN</a></li>
+    @if (Context.Session.GetString("logstatus") == "true")
+    {
+        <li style="float:right"><a href="/user/Login">KONTO</a></li>
+    }
+    else
+    {
+        <li style="float:right"><a href="/user/Login">ANMELDEN</a></li>
+    }
     <li style="float:right"><a href="#news">FAQ</a></li>
     <li style="float:right"><a href="#news">LANGUAGE</a></li>
     <li style="float:right"><a href="/user/Buy">BUY</a></li>

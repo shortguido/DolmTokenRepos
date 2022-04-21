@@ -1,5 +1,6 @@
 ﻿using DolmToken.Models;
 using FirstWebApp.Models.DB;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -149,6 +150,7 @@ namespace DolmToken.Controllers
         public IActionResult Login(User userDateFromForm)
         {
             // Parameter überprüfen
+            
             if (userDateFromForm == null)
             {
                 // Weiterleitung an eine Methode (Action) in selben Controller
@@ -166,7 +168,9 @@ namespace DolmToken.Controllers
                     _rep.Connect();
                     if (_rep.Login(userDateFromForm.username, userDateFromForm.password))
                     {
-                        return View("_Message", new Message("Login", "Sie haben sich erfolgreich angemeldet"));
+                        HttpContext.Session.SetString("username", userDateFromForm.username);
+                        HttpContext.Session.SetString("logstatus", "true");
+                        return View("Views/Home/Index.cshtml");
                     }
                     else
                     {
