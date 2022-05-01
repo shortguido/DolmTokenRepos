@@ -64,6 +64,12 @@ namespace DolmToken.Controllers
             // TODO: User mit der ID id updaten
             return View();
         }
+
+        public IActionResult checkMail(string email)
+        {
+            return View();
+        }
+
         [HttpGet]
         public IActionResult Registration()
         {
@@ -90,7 +96,9 @@ namespace DolmToken.Controllers
                     _rep.Connect();
                     if (_rep.Insert(userDateFromForm))
                     {
-                        return View("_Message", new Message("Registrierung", "Ihre Daten wurden erfolgreich gesendet!"));
+                        HttpContext.Session.SetString("username", userDateFromForm.username);
+                        HttpContext.Session.SetString("logstatus", "true");
+                        return View("Views/Home/Index.cshtml");
                     }
                     else
                     {
