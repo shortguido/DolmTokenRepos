@@ -205,5 +205,10 @@ namespace DolmToken.Controllers
 
             return View(userDateFromForm);
         }
+
+        public IActionResult Konto()
+        {
+            return View();
+        }
     }
 }

@@ -1,0 +1,60 @@
+﻿@model DolmToken.Models.Root
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Today's Cryptocurrency Prices</h1>
+<br />
+<table class="cmcAPI">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>24h %</th>
+            <th>7d %</th>
+            <th>Market Cap</th>
+            <th>Volume (24h)</th>
+            <th>Circulating Supply</th>
+            <th>Dominance</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var data in Model.data)
+        {
+
+        <tr>
+            @{
+                var stylecolor24h = "";
+                var stylecolor7d = "";
+                if (data.quote.EUR.percent_change_24h > 0)
+                {
+                    stylecolor24h = "color: green;";
+                }
+                else
+                {
+                    stylecolor24h = "color: red;";
+                }
+                if (data.quote.EUR.percent_change_7d > 0)
+                {
+                    stylecolor7d = "color: green;";
+                }
+                else
+                {
+                    stylecolor7d = "color: red;";
+                }
+
+            }
+            <td>@data.cmc_rank</td>
+            <td>@data.name  [@data.symbol]</td>
+            <td>€@String.Format("{0:0,0.##}", @data.quote.EUR.price)</td>
+            <td style="@stylecolor24h">@String.Format("{0:0.##}", @data.quote.EUR.percent_change_24h) %</td>
+            <td style="@stylecolor7d">@String.Format("{0:0.##}", @data.quote.EUR.percent_change_7d) %</td>
+            <td>€@String.Format("{0:0,0.##}", @data.quote.EUR.market_cap)</td>
+            <td>€@String.Format("{0:0,0.##}", @data.quote.EUR.volume_24h)</td>
+            <td>@String.Format("{0:0,0.##}", @data.circulating_supply) @data.symbol</td>
+            <td>@data.quote.EUR.market_cap_dominance %</td>
+        </tr>
+        }
+    </tbody>
+</table>

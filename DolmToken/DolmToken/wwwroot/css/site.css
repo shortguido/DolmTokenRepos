@@ -229,3 +229,19 @@ body2 {
     .card:hover .card-content {
         transform: translateY(0%);
     }
+
+.cmcAPI {
+    color: white;
+}
+
+th{
+    height: 25px;
+    border-bottom: 1px solid white;
+}
+
+td{
+    height: 70px;
+    width: 600px;
+    border-bottom: 1px solid white;
+    border-width: thin;
+}
