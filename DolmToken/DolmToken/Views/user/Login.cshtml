@@ -2,22 +2,40 @@
 @{
     ViewData["Title"] = "Index";
 }
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/64d58efce2.js"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/css/LogReg.css" />
+    <title>Login Form</title>
+</head>
 
-<h1>Login</h1>
-<form asp-controller="user" asp-action="login" method="post">
-    <p>
-        <label text="Benutzername" asp-for="username">Username/Email</label><br />
-        <input type="text" asp-for="username" placeholder="Your username/email..." />
-    </p>
-    <p>
-        <label asp-for="password">Password</label><br />
-        <input type="text" asp-for="password" placeholder="Your password..." />
-    </p>
-    <p>
-        <input type="submit" value="absenden" />
-        <input type="reset" value="abbrechen" />
-    </p>
-    <p>
-        <a href="/user/Registration">Hier kommen Sie zur Registrierung.</a>
-    </p>
-</form>
+<body>
+    <div class="container">
+        <div class="=forms-container">
+
+            <form asp-controller="user" asp-action="login" method="post">
+                <h2 class="title">Login</h2>
+
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" asp-for="username" placeholder="Your username/email..." />
+                    </div>
+
+            <div class="input-field">
+                <i class="fas fa-lock"></i>
+                <input type="password" asp-for="password" placeholder="Your password..." />
+            </div>
+        
+        
+            <input type="submit" value="Login" class="btn solid" />
+            <input type="reset" value="abbrechen" class="btn solid"/>
+        
+        <p>
+            <a class="link" href="/user/Registration">Hier kommen Sie zur Registrierung.</a>
+        </p>
+        </form>
+    </div>
+    </div>
+</body>

@@ -40,7 +40,6 @@ header {
 
 content {
     min-width: 340px;
-    float: left;
     min-height: 560px;
     padding: 60px 80px;
 }
