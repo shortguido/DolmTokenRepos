@@ -7,9 +7,13 @@
 
   <ItemGroup>
     <Compile Remove="images\**" />
+    <Compile Remove="wwwroot\flag-icons-main\**" />
     <Content Remove="images\**" />
+    <Content Remove="wwwroot\flag-icons-main\**" />
     <EmbeddedResource Remove="images\**" />
+    <EmbeddedResource Remove="wwwroot\flag-icons-main\**" />
     <None Remove="images\**" />
+    <None Remove="wwwroot\flag-icons-main\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,6 +21,10 @@
     <Compile Remove="Models\FileModel.cs" />
     <Compile Remove="Models\FileOnDatabaseModel.cs" />
     <Compile Remove="Models\FileOnFileSystem.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\555526.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -210,5 +210,9 @@ namespace DolmToken.Controllers
         {
             return View();
         }
+
+        public IActionResult Buy() {
+            return View();
+        }
     }
 }

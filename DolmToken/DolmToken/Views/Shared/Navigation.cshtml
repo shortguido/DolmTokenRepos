@@ -1,18 +1,37 @@
 ﻿<ul>
-    <a href="#home"><img style="margin: 5px 5px; width: 64px; height: 64px; float: left;" src="~/bitcoin.png" alt="Coin" /></a>
-    <li><a href="/Home/Index" style="font-weight: bold;">DOLM TOKEN</a></li>
-    @if (Context.Session.GetString("logstatus") == "true")
-    {
+    <a href="/Home/Index"><img style="margin: 1px 5px; width: 64px; height: 64px; float: left;" src="~/logo.png" alt="Coin" /></a>
+    
+        @if (Context.Session.GetString("logstatus") == "true")
+        {
         <li style="float:right"><a href="/user/Konto">KONTO</a></li>
+        
     }
     else
     {
         <li style="float:right"><a href="/user/Login">ANMELDEN</a></li>
     }
-    <li style="float:right"><a href="#news">FAQ</a></li>
-    <li style="float:right"><a href="#news">LANGUAGE</a></li>
-    <li style="float:right"><a href="/user/Buy">BUY</a></li>
-</ul>
+        <li style="float:right"><a href="#news">FAQ</a></li>
+        <li style="float:right">
+            <nav>
+                <div class="lang-menu">
+                    <div class="selected-lang">
+                        ENGLISH
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="#" class="at">GERMAN</a>
+                        </li>
+                        <li>
+                            <a href="#" class="us">ENGLISH</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </li>
+
+
+        <li style="float:right"><a href="/user/Buy">BUY</a></li>
+    </ul>
 
 
 
