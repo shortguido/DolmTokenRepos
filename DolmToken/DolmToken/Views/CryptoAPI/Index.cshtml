@@ -50,8 +50,8 @@
             <td>€@String.Format("{0:0,0.##}", @data.quote.EUR.price)</td>
             <td style="@stylecolor24h">@String.Format("{0:0.##}", @data.quote.EUR.percent_change_24h) %</td>
             <td style="@stylecolor7d">@String.Format("{0:0.##}", @data.quote.EUR.percent_change_7d) %</td>
-            <td>€@String.Format("{0:0,0.##}", @data.quote.EUR.market_cap)</td>
-            <td>€@String.Format("{0:0,0.##}", @data.quote.EUR.volume_24h)</td>
+            <td>@String.Format("{0:0,0.##}", @data.quote.EUR.market_cap) €</td>
+            <td>@String.Format("{0:0,0.##}", @data.quote.EUR.volume_24h) €</td>
             <td>@String.Format("{0:0,0.##}", @data.circulating_supply) @data.symbol</td>
             <td>@data.quote.EUR.market_cap_dominance %</td>
         </tr>
