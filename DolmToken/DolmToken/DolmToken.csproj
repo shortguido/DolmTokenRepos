@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\555526.png" />
+    <Content Remove="wwwroot\js\language.js" />
   </ItemGroup>
 
   <ItemGroup>

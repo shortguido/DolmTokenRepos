@@ -1,37 +1,30 @@
 ﻿<ul>
     <a href="/Home/Index"><img style="margin: 1px 5px; width: 64px; height: 64px; float: left;" src="~/logo.png" alt="Coin" /></a>
-    
-        @if (Context.Session.GetString("logstatus") == "true")
-        {
+
+    @if (Context.Session.GetString("logstatus") == "true")
+    {
         <li style="float:right"><a href="/user/Konto">KONTO</a></li>
-        
+
     }
     else
     {
         <li style="float:right"><a href="/user/Login">ANMELDEN</a></li>
     }
-        <li style="float:right"><a href="#news">FAQ</a></li>
-        <li style="float:right">
-            <nav>
-                <div class="lang-menu">
-                    <div class="selected-lang">
-                        ENGLISH
-                    </div>
-                    <ul>
-                        <li>
-                            <a href="#" class="at">GERMAN</a>
-                        </li>
-                        <li>
-                            <a href="#" class="us">ENGLISH</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </li>
+    <li style="float:right"><a href="#news">FAQ</a></li>
+    <li style="float:right"><a href="/user/Buy">BUY</a></li>
+    <li style="float:right">
+        <div id="google_translate_element"></div>
+    </li>
 
+</ul>
 
-        <li style="float:right"><a href="/user/Buy">BUY</a></li>
-    </ul>
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+    }
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 
 
