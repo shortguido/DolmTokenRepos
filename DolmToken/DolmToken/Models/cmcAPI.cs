@@ -10,7 +10,7 @@ namespace DolmToken.Models
 {
     class cmcAPI
     {
-        public static string API_KEY = System.IO.File.ReadAllText(@"C:\Users\dietz\Documents\.4BHWII\DolmToken\DolmTokenRepos-main\DolmTokenRepos\DolmTokenRepos\shortguido\DolmTokenRepos\DolmToken\DolmToken\api.txt");
+        public static string API_KEY = System.IO.File.ReadAllText(@"239f9e35-6320-4aa9-8b05-b6a9773f4b3d");
 
         public static string makeAPICall()
         {
