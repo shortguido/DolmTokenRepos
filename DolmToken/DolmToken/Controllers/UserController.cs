@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
@@ -146,7 +147,10 @@ namespace DolmToken.Controllers
             }
             // + mind. ein Großbuchstabe, + mind ein Kleinbuchstabe,
             // + mind. ein Sonderzeichen, + mind. eine Zahl
-
+            if (u.email == null || new EmailAddressAttribute().IsValid(u.email)==false)
+            {
+                ModelState.AddModelError("Email", "Prüfen sie ihre Eingabe!");
+            }
         }
         [HttpGet]
         public IActionResult Login()
@@ -204,6 +208,24 @@ namespace DolmToken.Controllers
             // erneut aufgerufen - mit den bereits eingeg. Daten
 
             return View(userDateFromForm);
+        }
+
+        public IActionResult Logout() {
+            try
+            {
+                    HttpContext.Session.SetString("logstatus", "false");
+                    return View("Views/Home/Index.cshtml");
+              
+            }
+            catch (DbException)
+            {
+                return View("_Message", new Message("Logout",
+                            "Bitte versuchen Sie es später erneut!"));
+            }
+            finally
+            {
+                _rep.Disconnect();
+            }
         }
 
         public IActionResult Konto()

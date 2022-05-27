@@ -1,5 +1,5 @@
-﻿<ul>
-    <a href="/Home/Index"><img style="margin: 1px 5px; width: 64px; height: 64px; float: left;" src="~/logo.png" alt="Coin" /></a>
+﻿<ul class="navigation">
+    <a href="/Home/Index/"><img style="margin: 1px 5px; width: 64px; height: 64px; float: left;" src="~/logo.png" alt="Coin" /></a>
 
     @if (Context.Session.GetString("logstatus") == "true")
     {
@@ -10,12 +10,12 @@
     {
         <li style="float:right"><a href="/user/Login">ANMELDEN</a></li>
     }
-    <li style="float:right"><a href="#news">FAQ</a></li>
+    <li style="float:right"><a href="/cryptoapi/index">API</a></li>
     <li style="float:right"><a href="/user/Buy">BUY</a></li>
     <li style="float:right">
         <div id="google_translate_element"></div>
     </li>
-
+    <li style="float:right"><a style="margin-right: 30px;" href="/home/index/">HOME</a></li>
 </ul>
 
 <script type="text/javascript">

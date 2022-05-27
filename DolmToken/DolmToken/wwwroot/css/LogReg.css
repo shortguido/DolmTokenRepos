@@ -11,13 +11,13 @@ input {
     font-family: "Poppins", sans-serif;
 }
 
-.ganze{
-padding: 30px 30px 30px 30px;
+.ganze {
+    padding: 50px;
 }
 
-.buy {
-    padding: 50px 70px 50px 70px;
-}
+    .buy {
+        padding: 50px 70px 50px 70px;
+    }
 .burning{
     padding: 10px 2px 18px 2px;
 }
@@ -115,10 +115,7 @@ form {
     }
 
 .settings {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    
 }
 
 p {

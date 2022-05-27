@@ -5,8 +5,14 @@
 footer{
     background: transparent;
 }
+
+a{
+    color: white;
+}
+
 body {
-    background-image: linear-gradient(to bottom right, #000000, #666666);
+    top: 0px !important;
+    background: #121212;
 }
 
 h1 {
@@ -36,7 +42,8 @@ h3 {
 }
 
 header {
-    height: 100px;
+    height: 75px;
+    background: #161616;
 }
 
 content {
@@ -301,7 +308,17 @@ ul {
 .goog-te-banner-frame.skiptranslate {
     display: none !important;
 }
-
-body {
-    top: 0px !important;
+.goog-tooltip {
+    display: none !important;
 }
+
+    .goog-tooltip:hover {
+        display: none !important;
+    }
+
+.goog-text-highlight {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
