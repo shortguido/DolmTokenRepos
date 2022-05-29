@@ -294,10 +294,11 @@ ul {
         text-decoration: none;
     }
 
-#google_translate_element{
+#google_translate_element {
     margin-top: 20px;
     margin-right: 30px;
 }
+
 .goog-logo-link {
     display: none !important;
 }
@@ -305,9 +306,11 @@ ul {
 .goog-te-gadget {
     color: transparent !important;
 }
+
 .goog-te-banner-frame.skiptranslate {
     display: none !important;
 }
+
 .goog-tooltip {
     display: none !important;
 }

@@ -14,11 +14,38 @@
 <body>
     <div class="ganze">
         <h1>Settings</h1>
-        <div class="=settings">
-            <input type="button" value="Crypto prices" class="btn solid" /> <p style="margin-left:20px;">See all crypto prices with one single click.</p>
+        <div class="=settings" style="border-top: 4px solid white;">
+            <a href="/cryptoapi/index/"><input style="margin-top: 30px;" type="button" value="Crypto prices" class="btn solid" /> <p style="margin-left:20px; ">See all crypto prices with one single click.</p></a>
+
+            <a>
+                <input type="button" value="Nickname" class="btn solid" id="toggle" />
+                <button action="submit" value="set" style="width: 135px; margin-left:20px; border-radius: 20px; ">SET NICKNAME</button>
+                <div class="input-field" style="display:none;">
+                    <i class="fas fa-user"></i>
+                    <input type="text" asp-for="username" placeholder="Your nickname..." />
+                    <span asp-validation-for="username"></span>
+                </div>
+                <p style="margin-left:20px;">Set a sick Nickname how you would in the old days! (for example: xX_SpeedWanker69_Xx)</p>
+            </a>
+
+            <a>
+                <input type="button" value="Password" class="btn solid" id="toggle1"/>
+                <button action="submit" value="set" style="width: 135px; margin-left: 20px; border-radius: 20px;">SET PASSWORD</button>
+                <div class="input-field1" style="display:none;">
+                    <i class="fas fa-lock"></i>
+                    <input type="text" asp-for="password" placeholder="New password..." />
+                    <span asp-validation-for="password"></span>
+                </div>
+                <p style="margin-left:20px;">Change your password to a better one!</p>
+            </a>
+
         </div>
-        <input type="button" value="logout" class="btn solid" />
+        <a href="/user/logout/"><input style="margin-top: 100px;" type="button" value="logout" class="btn solid" /></a>
     </div>
-    
+
 </body>
+
+@section Scripts{
+    <script src="~/js/toggle.js" asp-append-version="true"></script>
+}
 
