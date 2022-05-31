@@ -14,6 +14,10 @@
 <body>
     <div class="ganze">
         <h1>Settings</h1>
+        <form asp-controller="user" asp-action="UploadFile" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" />
+            <button type="submit">Upload file</button>
+        </form>
         <div class="=settings" style="border-top: 4px solid white;">
             <a href="/cryptoapi/index/"><input style="margin-top: 30px;" type="button" value="Crypto prices" class="btn solid" /> <p style="margin-left:20px; ">See all crypto prices with one single click.</p></a>
 
@@ -29,7 +33,7 @@
             </a>
 
             <a>
-                <input type="button" value="Password" class="btn solid" id="toggle1"/>
+                <input type="button" value="Password" class="btn solid" id="toggle1" />
                 <button action="submit" value="set" style="width: 135px; margin-left: 20px; border-radius: 20px;">SET PASSWORD</button>
                 <div class="input-field1" style="display:none;">
                     <i class="fas fa-lock"></i>

@@ -75,6 +75,11 @@ namespace FirstWebApp.Models.DB
             return false;
         }
 
+        public void ChangeUserPicture(string username, string imagePath)
+        {
+            
+        }
+
         public void Connect()
         {
             // falls die Verbindung noch nicht ezeugt wurde

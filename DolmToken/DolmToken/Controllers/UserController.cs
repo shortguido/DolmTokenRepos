@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Common;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -147,11 +148,32 @@ namespace DolmToken.Controllers
             }
             // + mind. ein Großbuchstabe, + mind ein Kleinbuchstabe,
             // + mind. ein Sonderzeichen, + mind. eine Zahl
-            if (u.email == null || new EmailAddressAttribute().IsValid(u.email)==false)
+            if (u.email == null || new EmailAddressAttribute().IsValid(u.email) == false)
             {
                 ModelState.AddModelError("Email", "Prüfen sie ihre Eingabe!");
             }
         }
+
+        private void ValidateLoginData(User u)
+        {
+            // Parameter überprüfen
+            if (u == null)
+            {
+                return;
+            }
+            // Username
+            if (u.username == null || (u.username.Trim().Length < 4))
+            {
+                ModelState.AddModelError("Username", "Der Benutzername muss mindestens 4 Zeichen lang sein!");
+            }
+
+            // Passwort
+            if (u.password == null || (u.password.Length < 8))
+            {
+                ModelState.AddModelError("Password", "Das Passwort muss mindestens 8 Zeichen lang sein!");
+            }
+        }
+
         [HttpGet]
         public IActionResult Login()
         {
@@ -162,7 +184,7 @@ namespace DolmToken.Controllers
         public IActionResult Login(User userDateFromForm)
         {
             // Parameter überprüfen
-            
+
             if (userDateFromForm == null)
             {
                 // Weiterleitung an eine Methode (Action) in selben Controller
@@ -170,7 +192,7 @@ namespace DolmToken.Controllers
             }
 
             // Eingaben des Benutzers überprüfen - Validierung
-            ValidateRegistrationData(userDateFromForm);
+            ValidateLoginData(userDateFromForm);
 
             // Falls das Formular richtig ausgefüllt wurde
             if (ModelState.IsValid)
@@ -210,12 +232,13 @@ namespace DolmToken.Controllers
             return View(userDateFromForm);
         }
 
-        public IActionResult Logout() {
+        public IActionResult Logout()
+        {
             try
             {
-                    HttpContext.Session.SetString("logstatus", "false");
-                    return View("Views/Home/Index.cshtml");
-              
+                HttpContext.Session.SetString("logstatus", "false");
+                return View("Views/Home/Index.cshtml");
+
             }
             catch (DbException)
             {
@@ -233,8 +256,45 @@ namespace DolmToken.Controllers
             return View();
         }
 
-        public IActionResult Buy() {
+        public IActionResult Buy()
+        {
             return View();
         }
+        [HttpPost]
+        public IActionResult UploadFile(IFormFile file)
+        {
+            try
+            {
+                _rep.Connect();
+                // TODO: Change Content to smth else 
+                string pathImages = "../wwwroot/images/";
+                if (!Directory.Exists(pathImages))
+                {
+                    Directory.CreateDirectory(pathImages);
+                }
+                if (file == null || file.Length == 0)
+                    return RedirectToAction("Konto");
+                if (file.Length > 1024 * 1024)
+                {
+                    return RedirectToAction("Konto");
+                }
+                var filePath = Path.GetTempFileName();
+                using (Stream fileStream = new FileStream(pathImages, FileMode.Create))
+                {
+                    file.CopyTo(fileStream);
+                }
+                _rep.ChangeUserPicture(HttpContext.Session.GetString("username"), pathImages);
+                return RedirectToAction("Konto");
+            }
+            catch (DbException)
+            {
+                return View("_Message", new Message("Datenbankfehler!", "Der Benutzer konnte nicht geändert werden! Versuchen sie es später erneut."));
+            }
+            finally
+            {
+                _rep.Disconnect();
+            }
+        }
+
     }
 }
