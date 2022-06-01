@@ -1,21 +1,33 @@
 ﻿<ul class="navigation">
-    <a href="/Home/Index/"><img style="margin: 1px 5px; width: 64px; height: 64px; float: left;" src="~/logo.png" alt="Coin" /></a>
+    <a href="/Home/Index/"><img style="margin: 5px 5px; width: 64px; height: 64px; float: left;" src="~/logo.png" alt="Coin" /></a>
 
     @if (Context.Session.GetString("logstatus") == "true")
     {
-        <li style="float:right"><a href="/user/Konto">KONTO</a></li>
+
+        <li style="float:right">
+            <a href="/user/Konto">
+                @if (Context.Session.GetString("image") != null)
+                {
+                    <img class="prpic" src="@Context.Session.GetString("image")" />
+                }KONTO
+            </a>
+        </li>
 
     }
     else
     {
         <li style="float:right"><a href="/user/Login">SIGN IN</a></li>
     }
-    <li style="float:right"><a href="/cryptoapi/index">API</a></li>
+    @if (Context.Session.GetString("logstatus") == "true")
+    {
+        <li style="float:right"><a href="/cryptoapi/index">CRYPTOS</a></li>
+    }
+
     <li style="float:right"><a href="/user/Buy">BUY</a></li>
     <li style="float:right">
         <div id="google_translate_element"></div>
     </li>
-    <li style="float:right"><a style="margin-right: 30px;" href="/home/index/">HOME</a></li>
+
 </ul>
 
 <script type="text/javascript">

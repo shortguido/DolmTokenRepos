@@ -22,6 +22,42 @@ namespace FirstWebApp.Models.DB
         //      SQL-Befehle gesendet, ...
         private DbConnection _conn;
 
+        public bool changePassword(User user)
+        {
+            if (this._conn?.State == ConnectionState.Open)
+            {
+                //ein leeres Commmand erzuegen
+                DbCommand cmdUPW = this._conn.CreateCommand();
+                // SQL-Befehl angeben: Parameter verwenden, um SQL-Injection zu vermeiden
+                //      @username... Paramtername - kann frei gewählt werden
+                //       SQL-Injection: es versucht ein Angreifer einen SQL-Befehl zu den MySQL-Server zu senden
+                cmdUPW.CommandText = "update users set username = @username where user_id = @id;";
+
+                DbParameter paramID = cmdUPW.CreateParameter();
+                //hier den oben gewählten Parameternamen verwenden
+                paramID.ParameterName = "id";
+                paramID.DbType = DbType.String;
+                paramID.Value = user.UserId;
+
+                //Parameter @username befüllen
+                // leeres Paramterobjekt
+                DbParameter paramUN = cmdUPW.CreateParameter();
+                //hier den oben gewählten Parameternamen verwenden
+                paramUN.ParameterName = "username";
+                paramUN.DbType = DbType.String;
+                paramUN.Value = user.username;
+
+                cmdUPW.Parameters.Add(paramID);
+                cmdUPW.Parameters.Add(paramUN);
+
+                // nun senden wird das Command (Insert) an den Server
+                return cmdUPW.ExecuteNonQuery() == 1;
+
+            }
+
+            return false;
+        }
+
         public bool ChangeUserDate(int userId, User newUserDate)
         {
             if (this._conn?.State == ConnectionState.Open)
@@ -69,6 +105,42 @@ namespace FirstWebApp.Models.DB
 
                 // nun senden wird das Command (Insert) an den Server
                 return cmdUpdate.ExecuteNonQuery() == 1;
+
+            }
+
+            return false;
+        }
+
+        public bool changeUsername(User user)
+        {
+            if (this._conn?.State == ConnectionState.Open)
+            {
+                //ein leeres Commmand erzuegen
+                DbCommand cmdUUN = this._conn.CreateCommand();
+                // SQL-Befehl angeben: Parameter verwenden, um SQL-Injection zu vermeiden
+                //      @username... Paramtername - kann frei gewählt werden
+                //       SQL-Injection: es versucht ein Angreifer einen SQL-Befehl zu den MySQL-Server zu senden
+                cmdUUN.CommandText = "update users set password = @password where user_id = @id;";
+
+                DbParameter paramID = cmdUUN.CreateParameter();
+                //hier den oben gewählten Parameternamen verwenden
+                paramID.ParameterName = "id";
+                paramID.DbType = DbType.String;
+                paramID.Value = user.UserId;
+
+                //Parameter @username befüllen
+                // leeres Paramterobjekt
+                DbParameter paramPW = cmdUUN.CreateParameter();
+                //hier den oben gewählten Parameternamen verwenden
+                paramPW.ParameterName = "password";
+                paramPW.DbType = DbType.String;
+                paramPW.Value = user.password;
+
+                cmdUUN.Parameters.Add(paramID);
+                cmdUUN.Parameters.Add(paramPW);
+
+                // nun senden wird das Command (Insert) an den Server
+                return cmdUUN.ExecuteNonQuery() == 1;
 
             }
 

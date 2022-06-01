@@ -248,7 +248,7 @@ td{
 .logo-header {
     position: absolute;
     top: 40%;
-    left: 48%;
+    left: 50%;
     transform: translate(-50%, -50%);
     color: #49429e;
 }
@@ -325,3 +325,14 @@ ul {
     box-shadow: none !important;
 }
 
+.prpic {
+    border-radius: 5%;
+    width: 20px;
+    height: 11.3px;
+}
+
+.prpic1 {
+    border-radius: 5%;
+    width: 200px;
+    height: 113px;
+}

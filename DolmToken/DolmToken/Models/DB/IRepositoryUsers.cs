@@ -33,6 +33,10 @@ namespace FirstWebApp.Models.DB
 
         void ChangeUserPicture(string username, string imagePath);
 
+        bool changeUsername(User user);
+
+        bool changePassword(User user);
+
         // Weitere Methoden 
     }
 }

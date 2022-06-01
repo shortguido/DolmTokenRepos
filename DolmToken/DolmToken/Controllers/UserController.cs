@@ -265,9 +265,8 @@ namespace DolmToken.Controllers
         {
             try
             {
-                _rep.Connect();
-                // TODO: Change Content to smth else 
-                string pathImages = "../wwwroot/images/";
+                _rep.Connect(); 
+                string pathImages = "./wwwroot/images/";
                 if (!Directory.Exists(pathImages))
                 {
                     Directory.CreateDirectory(pathImages);
@@ -278,12 +277,13 @@ namespace DolmToken.Controllers
                 {
                     return RedirectToAction("Konto");
                 }
-                var filePath = Path.GetTempFileName();
-                using (Stream fileStream = new FileStream(pathImages, FileMode.Create))
+                string filepath = Path.Combine(pathImages, Path.GetFileName(file.FileName));
+                using (Stream fileStream = new FileStream(filepath, FileMode.Create))
                 {
                     file.CopyTo(fileStream);
                 }
                 _rep.ChangeUserPicture(HttpContext.Session.GetString("username"), pathImages);
+                HttpContext.Session.SetString("image", filepath.Split("wwwroot")[1]); 
                 return RedirectToAction("Konto");
             }
             catch (DbException)
@@ -294,6 +294,57 @@ namespace DolmToken.Controllers
             {
                 _rep.Disconnect();
             }
+        }
+        [HttpPost]
+        public IActionResult UpdateUsername(User user)
+        {
+            try
+            {
+                _rep.Connect();
+                if (_rep.changeUsername(user))
+                {
+                    return View("Views/CryptoAPI/Index.cshtml");
+                }
+                
+            }
+            catch (DbException)
+            {
+                return View("_Message", new Message("Datenbankfehler",
+                                "Die Benutzer konnten nicht geladen werden",
+                                "Versuchen Sie es später erneut!"));
+            }
+            finally
+            {
+                _rep.Disconnect();
+            }
+
+            return View(user);
+        }
+
+        [HttpPost]
+        public IActionResult UpdatePassword(User user)
+        {
+            try
+            {
+                _rep.Connect();
+                if (_rep.changePassword(user))
+                {
+                    return View("Views/CryptoAPI/Index.cshtml");
+                }
+
+            }
+            catch (DbException)
+            {
+                return View("_Message", new Message("Datenbankfehler",
+                                "Die Benutzer konnten nicht geladen werden",
+                                "Versuchen Sie es später erneut!"));
+            }
+            finally
+            {
+                _rep.Disconnect();
+            }
+
+            return View(user);
         }
 
     }

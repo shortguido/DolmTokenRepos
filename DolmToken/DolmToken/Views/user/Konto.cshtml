@@ -14,20 +14,31 @@
 <body>
     <div class="ganze">
         <h1>Settings</h1>
-        <form asp-controller="user" asp-action="UploadFile" method="post" enctype="multipart/form-data">
-            <input type="file" name="file" />
-            <button type="submit">Upload file</button>
-        </form>
+        
         <div class="=settings" style="border-top: 4px solid white;">
-            <a href="/cryptoapi/index/"><input style="margin-top: 30px;" type="button" value="Crypto prices" class="btn solid" /> <p style="margin-left:20px; ">See all crypto prices with one single click.</p></a>
+            <br />
+            @if (Context.Session.GetString("image") != null)
+            {
+                <img class="prpic1" src="@Context.Session.GetString("image")" />
+            }
+            <br />
+            <div style="text-align: left; float: left">
+                <form asp-controller="user" asp-action="UploadFile" method="post" enctype="multipart/form-data">
 
+                    <button type="submit"><input type="file" name="file" />Upload file</button>
+                </form>
+            </div>
+            <br />
+            <br />
             <a>
                 <input type="button" value="Nickname" class="btn solid" id="toggle" />
                 <button action="submit" value="set" style="width: 135px; margin-left:20px; border-radius: 20px; ">SET NICKNAME</button>
                 <div class="input-field" style="display:none;">
                     <i class="fas fa-user"></i>
-                    <input type="text" asp-for="username" placeholder="Your nickname..." />
-                    <span asp-validation-for="username"></span>
+                    <form asp-controller="user" asp-action="UpdateUsername" method="post">
+                        <input type="text" asp-for="username" placeholder="Your nickname..." />
+                        <span asp-validation-for="username"></span>
+                    </form>
                 </div>
                 <p style="margin-left:20px;">Set a sick Nickname how you would in the old days! (for example: xX_SpeedWanker69_Xx)</p>
             </a>
@@ -37,8 +48,10 @@
                 <button action="submit" value="set" style="width: 135px; margin-left: 20px; border-radius: 20px;">SET PASSWORD</button>
                 <div class="input-field1" style="display:none;">
                     <i class="fas fa-lock"></i>
-                    <input type="text" asp-for="password" placeholder="New password..." />
-                    <span asp-validation-for="password"></span>
+                    <form asp-controller="user" asp-action="UpdatePassword" method="post">
+                        <input type="text" asp-for="password" placeholder="New password..." />
+                        <span asp-validation-for="password"></span>
+                    </form>
                 </div>
                 <p style="margin-left:20px;">Change your password to a better one!</p>
             </a>
